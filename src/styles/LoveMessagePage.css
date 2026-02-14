@@ -1,0 +1,219 @@
+.love-message-page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1.25rem, 4vw, 2.8rem);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.love-message-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 12% 20%, rgba(255, 196, 219, 0.5) 0%, transparent 36%),
+    radial-gradient(circle at 84% 12%, rgba(255, 225, 198, 0.55) 0%, transparent 35%),
+    radial-gradient(circle at 50% 88%, rgba(255, 189, 210, 0.4) 0%, transparent 35%);
+  z-index: 1;
+}
+
+.message-card {
+  position: relative;
+  z-index: 2;
+  width: min(740px, 95vw);
+  border-radius: 30px;
+  padding: clamp(1.6rem, 4vw, 3.1rem);
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  background: linear-gradient(152deg, rgba(255, 250, 244, 0.88), rgba(255, 237, 244, 0.8));
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-soft);
+  animation: message-card-in 0.8s ease both;
+}
+
+.message-kicker {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: #bb607f;
+}
+
+.message-title {
+  margin: 0.7rem 0 1rem;
+  font-family: 'Playfair Display', 'Times New Roman', serif;
+  font-size: clamp(1.95rem, 4.8vw, 3.3rem);
+  line-height: 1.15;
+  color: #9f305f;
+  animation: reveal-title 0.9s ease both 0.25s;
+}
+
+.message-text {
+  margin: 0 auto;
+  max-width: 40ch;
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  line-height: 1.6;
+  color: #754159;
+}
+
+.love-counter {
+  margin: 1.1rem 0 0;
+  color: #92395f;
+  font-weight: 600;
+}
+
+.love-counter strong {
+  color: #d44379;
+  font-weight: 800;
+}
+
+.message-actions {
+  margin-top: 1.35rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.surprise-button,
+.restart-button {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.76rem 1.35rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    filter 0.22s ease;
+}
+
+.surprise-button {
+  background: linear-gradient(135deg, #ff8bb2 0%, #e9558a 100%);
+  color: #fff;
+  box-shadow: 0 12px 24px rgba(218, 72, 124, 0.35);
+}
+
+.restart-button {
+  background: rgba(255, 255, 255, 0.92);
+  color: #994266;
+  box-shadow: 0 10px 20px rgba(178, 86, 125, 0.2);
+}
+
+.surprise-button:hover,
+.restart-button:hover {
+  transform: translateY(-2px);
+  filter: saturate(1.05);
+}
+
+.surprise-button:focus-visible,
+.restart-button:focus-visible {
+  outline: 3px solid rgba(237, 96, 140, 0.5);
+  outline-offset: 2px;
+}
+
+.surprise-box {
+  position: relative;
+  margin-top: 1.25rem;
+  padding: 1rem 1.1rem;
+  border-radius: 18px;
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.93), rgba(255, 243, 247, 0.94));
+  border: 1px solid rgba(255, 203, 225, 0.7);
+  overflow: hidden;
+  animation: surprise-in 0.4s ease both;
+}
+
+.surprise-text {
+  margin: 0;
+  font-weight: 700;
+  color: #a63c66;
+}
+
+.confetti-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -15%;
+  width: 9px;
+  height: 16px;
+  border-radius: 3px;
+  background: hsl(var(--hue), 92%, 67%);
+  opacity: 0.95;
+  animation: confetti-drop var(--duration) ease-in forwards;
+  animation-delay: var(--delay);
+}
+
+@keyframes message-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes reveal-title {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes surprise-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes confetti-drop {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  100% {
+    transform: translate3d(var(--x-shift), 135%, 0) rotate(var(--spin));
+    opacity: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .message-card {
+    border-radius: 24px;
+  }
+
+  .message-text {
+    max-width: 31ch;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .message-card,
+  .message-title,
+  .surprise-box,
+  .confetti-piece {
+    animation: none !important;
+  }
+}

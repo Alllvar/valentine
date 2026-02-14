@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap');
+
+:root {
+  --rose-50: #fff4f7;
+  --rose-100: #ffe7ef;
+  --rose-200: #ffd5e3;
+  --rose-300: #ffbfd4;
+  --rose-500: #ec5f8a;
+  --rose-700: #b13e69;
+  --peach-200: #ffe4c2;
+  --blush-100: #fff7f2;
+  --ink: #5b2c44;
+  --shadow-soft: 0 24px 48px rgba(178, 70, 112, 0.24);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Manrope', 'Trebuchet MS', sans-serif;
+  color: var(--ink);
+  background: linear-gradient(165deg, #fffaf5 0%, #ffeef5 46%, #ffdce9 100%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  font: inherit;
+}

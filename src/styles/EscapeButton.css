@@ -1,0 +1,35 @@
+.escape-button {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  padding: 0.75rem 1.5rem;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(160deg, #ffffff 0%, #fff3f8 100%);
+  color: #a43862;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 14px 34px rgba(163, 63, 105, 0.3);
+  transition:
+    transform 0.33s cubic-bezier(0.16, 0.8, 0.2, 1.25),
+    box-shadow 0.24s ease,
+    background 0.24s ease;
+  user-select: none;
+}
+
+.escape-button:hover {
+  background: linear-gradient(160deg, #fff9fc 0%, #ffeaf4 100%);
+  box-shadow: 0 18px 38px rgba(163, 63, 105, 0.36);
+}
+
+.escape-button:focus-visible {
+  outline: 3px solid #ff95bc;
+  outline-offset: 2px;
+}
+
+.escape-button:not(.is-ready) {
+  opacity: 0;
+  pointer-events: none;
+}
